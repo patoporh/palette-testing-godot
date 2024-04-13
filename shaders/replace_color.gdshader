@@ -15,6 +15,24 @@ bool in_range(vec3 color1, vec3 color2) {
 	return false;
 }
 
+float grayscale(vec3 color) {
+	return (color.r + color.g + color.b) / 3.0;
+}
+
+vec3 closest_color(vec3 color) {
+	float grayscale_color = grayscale(color);
+	float closest_value = 1.0;
+	int closest_index = 0;
+	for (int i = 0; i < original_palette.length(); i++) {
+		float diff = abs(grayscale(original_palette[i].rgb) - grayscale_color);
+		if (diff < closest_value) {
+			closest_index = i;
+			closest_value = diff;
+		}
+	}
+	return current_palette[closest_index].rgb;
+}
+
 void fragment() {
     vec3 color = texture(screen_texture, SCREEN_UV).rgb;
 	bool changed = false;
@@ -31,5 +49,5 @@ void fragment() {
 	if (changed)
 		COLOR.rgb = color.rgb;
 	else
-		COLOR.rgb = current_palette[0].rgb;
+		COLOR.rgb = closest_color(color.rgb);
 }

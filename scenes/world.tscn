@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6borcvd56g6q"]
+[gd_scene load_steps=5 format=3 uid="uid://b6borcvd56g6q"]
 
 [ext_resource type="Texture2D" uid="uid://gyou8idxwahv" path="res://sprites/sprite.png" id="1_j0bt8"]
 [ext_resource type="Material" uid="uid://c7dkyxkdej420" path="res://shaders/replace_color.tres" id="1_mn6ad"]
+
+[sub_resource type="Gradient" id="Gradient_511mv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2ids0"]
+gradient = SubResource("Gradient_511mv")
+fill = 1
+fill_from = Vector2(0.512821, 0.491453)
 
 [node name="World" type="Node"]
 
@@ -20,3 +27,8 @@ grow_vertical = 2
 position = Vector2(282, 153)
 scale = Vector2(4, 4)
 texture = ExtResource("1_j0bt8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(114, 127)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_2ids0")
