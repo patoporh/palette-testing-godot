@@ -36,7 +36,7 @@ vec3 closest_color(vec3 color) {
 void fragment() {
     vec3 color = texture(screen_texture, SCREEN_UV).rgb;
 	bool changed = false;
-	
+
 	// Compare the original palette's colors against the fragment
 	for (int i = 0; i < original_palette.length(); i++) {
 		if (in_range(color, original_palette[i].rgb)) {
@@ -45,7 +45,7 @@ void fragment() {
 			break;
 		}
 	}
-	
+
 	if (changed)
 		COLOR.rgb = color.rgb;
 	else
