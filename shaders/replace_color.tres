@@ -4,3 +4,5 @@
 
 [resource]
 shader = ExtResource("1_vtaq6")
+shader_parameter/original_palette = PackedColorArray()
+shader_parameter/current_palette = PackedColorArray()
