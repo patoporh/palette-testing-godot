@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ewp7dsqtspth"]
+
+[ext_resource type="Script" path="res://scripts/palette_shader.gd" id="1_0r8mg"]
+[ext_resource type="Material" uid="uid://c7dkyxkdej420" path="res://shaders/replace_color.tres" id="1_wpudw"]
+
+[node name="PaletteShader" type="CanvasLayer"]
+script = ExtResource("1_0r8mg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+auto_translate_mode = 1
+visible = false
+material = ExtResource("1_wpudw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
