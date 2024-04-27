@@ -5,11 +5,17 @@ const MAX_SPEED = 10000
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var input_h = Input.get_axis("left", "right")
-	var input_v = Input.get_axis("up", "down")
+func _physics_process(delta):
+	move(delta)
 
-	velocity.x = input_h * MAX_SPEED * delta
-	velocity.y = input_v * MAX_SPEED * delta
+
+func move(delta):
+	var direction = Vector2(
+		Input.get_axis("left", "right"),
+		Input.get_axis("up", "down")
+	).normalized()
+
+	velocity.x = direction.x * MAX_SPEED * delta
+	velocity.y = direction.y * MAX_SPEED * delta
 
 	move_and_slide()
