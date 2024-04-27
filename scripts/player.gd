@@ -1,21 +1,22 @@
 extends CharacterBody2D
 
 
-const MAX_SPEED = 10000
+const MAX_SPEED = 5000
+const FRICTION = 700
+const ACCELERATION = 2000
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	move(delta)
-
-
-func move(delta):
+	print(delta)
 	var direction = Vector2(
 		Input.get_axis("left", "right"),
 		Input.get_axis("up", "down")
-	).normalized()
+	)
 
-	velocity.x = direction.x * MAX_SPEED * delta
-	velocity.y = direction.y * MAX_SPEED * delta
+	if direction != Vector2.ZERO:
+		velocity += direction * ACCELERATION * delta
+		velocity = velocity.limit_length(MAX_SPEED * delta)
+	else: 
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
 	move_and_slide()
