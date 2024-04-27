@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsjkb7h3in2j"]
+[gd_scene load_steps=5 format=3 uid="uid://dsjkb7h3in2j"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_5bl6e"]
 [ext_resource type="Texture2D" uid="uid://dh2vh5dc040dl" path="res://sprites/player.png" id="1_uh0g5"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_0hnsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bc3ap"]
 size = Vector2(6, 7)
@@ -16,3 +17,13 @@ texture = ExtResource("1_uh0g5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_bc3ap")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+anchor_mode = 0
+script = ExtResource("3_0hnsp")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-1, -1, 2, 2)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="Camera2D" method="update_position"]
