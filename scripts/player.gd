@@ -7,7 +7,6 @@ const ACCELERATION = 2000
 
 
 func _physics_process(delta):
-	print(delta)
 	var direction = Vector2(
 		Input.get_axis("left", "right"),
 		Input.get_axis("up", "down")
